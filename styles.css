@@ -69,7 +69,7 @@ header{
     flex-wrap: wrap;
 }
 
-.game-block{
+.board-block{
     box-sizing: border-box;
     background-color: bisque;
     border: 1px solid black;

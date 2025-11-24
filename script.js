@@ -1,12 +1,30 @@
+const gameContainer = document.getElementById("game-container");
+
 function createBoard(){
     let board = ["", "", "", "", "", "", "", "", ""];
 
     const getBoardElement = (position) => board[position];
 
-    const setBoardElement = (value,position) => board[position] = value;
+    const setBoardElement = (value, position) => {
+        board[position] = value;
+    };
 
-    return {board,getBoardElement,setBoardElement};
+    const displayBoard = (container) => {
+        container.innerHTML = "";
+
+        board.forEach((value, index) => {
+            const boardBlock = document.createElement("div");
+            boardBlock.classList.add("board-block");
+            boardBlock.dataset.id = index;
+            boardBlock.textContent = value;
+
+            container.appendChild(boardBlock);
+        });
+    };
+
+    return { board, getBoardElement, setBoardElement, displayBoard };
 }
+
 
 function checkWin(board) {
     const winConditions = [
@@ -22,23 +40,23 @@ function checkWin(board) {
 
     for (let condition of winConditions) {
         const [a, b, c] = condition;
-        if (board[a] !== "" &&
+        if (
+            board[a] !== "" &&
             board[a] === board[b] &&
-            board[a] === board[c]) {
+            board[a] === board[c]
+        ) {
             return board[a];
         }
     }
 
-    return null; 
+    return null;
 }
 
+
 function getTurn(turn) {
-    if (turn % 2 === 1){
-        return "X"
-    }else{
-        return "O";
-    }
+    return turn % 2 === 1 ? "X" : "O";
 }
+
 
 function playGame() {
     let boardObj = createBoard();
@@ -46,7 +64,6 @@ function playGame() {
     for (let i = 1; i <= 9; i++) {
 
         let currentPlayer = getTurn(i);
-
         let position = prompt("Select a position (0–8): ");
         position = Number(position);
 
@@ -64,6 +81,8 @@ function playGame() {
 
         boardObj.setBoardElement(currentPlayer, position);
 
+        boardObj.displayBoard(gameContainer);
+
         let winner = checkWin(boardObj.board);
 
         if (winner !== null) {
@@ -75,5 +94,3 @@ function playGame() {
     alert("It's a draw!");
     return "draw";
 }
-
-playGame();
