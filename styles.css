@@ -52,6 +52,10 @@ header{
     background-color: brown;
 }
 
+.disabled{
+    pointer-events: none;
+}
+
 .middle-section{
     display: flex;
     justify-content: center;
@@ -61,7 +65,7 @@ header{
     height: 75vh;
 }
 
-.game-container{
+#game-container{
     border: 2px solid black;
     width: 65%;
     height: 65%;
