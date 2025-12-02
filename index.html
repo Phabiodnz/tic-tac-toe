@@ -8,24 +8,65 @@
 </head>
 <body>
     <script src="script.js" defer></script>
+
     <header>
-        <h1>TIC TAC TOE</h1>
     </header>
-    <section class="middle-section">
-        <div id="game-container">
-            <div class="board-block"></div>
-            <div class="board-block"></div>
-            <div class="board-block"></div>
-            <div class="board-block"></div>
-            <div class="board-block"></div>
-            <div class="board-block"></div>
-            <div class="board-block"></div>
-            <div class="board-block"></div>
-            <div class="board-block"></div>
+    <div class="paper-background">
+        <section class="subtitle-section">
+            <h2>
+                Tic-Tac-Toe built with JavaScript <br>
+                Dynamic board, player switching, and win/draw detection <br>
+                Simple, clean and fully interactive
+            </h2>
+        </section>
+
+        <section class="middle-section">
+            <div class="counters-container">
+                <div class="victory-counter-container">
+                    <div class="player-container">
+                        <div>X</div>
+                        <div><span>0</span></div>
+                    </div>
+
+                    <div class="turn-alternator">Your turn!</div>
+                </div>
+
+                <div class="victory-counter-container">
+                    <div class="player-container">
+                        <div>O</div>
+                        <div><span>0</span></div>
+                    </div>
+
+                    <div class="turn-alternator"><span>Your turn!</span></div>
+                </div>
+            </div>
+
+            <div id="game-container">
+                <div class="board-block"></div>
+                <div class="board-block"></div>
+                <div class="board-block"></div>
+                <div class="board-block"></div>
+                <div class="board-block"></div>
+                <div class="board-block"></div>
+                <div class="board-block"></div>
+                <div class="board-block"></div>
+                <div class="board-block"></div>
+            </div>
+            <div class="btn-container">
+                <button id="play-btn">PLAY</button>
+                <button id="reset-btn">RESET</button>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>Designed by Phabiodnz</p>
+        
+        <div class="socials">
+            <a href="https://github.com/Phabiodnz" target="_blank" ><img src="images/github-logo.png" alt="Github Logo" class="github-logo"></a>
+            <a href="https://www.linkedin.com/in/phabiodnz/" target="_blank" ><img src="images/linkedin-logo.png" alt="Linkedin Logo" class="linkedin-logo"></a>
         </div>
-        <button id="play-btn">PLAY</button>
-        <button id="reset-btn">RESET</button>
-    </section>
+    </footer>
 </body>
 
 
