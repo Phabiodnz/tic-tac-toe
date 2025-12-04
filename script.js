@@ -57,6 +57,8 @@ function createBoard() {
         // Clear previous render
         container.innerHTML = "";
 
+        turnAlternator(boardObj.currentPlayer);
+
         // Loop through all board cells and create UI blocks
         board.forEach((value, index) => {
             const boardBlock = document.createElement("div");
@@ -64,10 +66,12 @@ function createBoard() {
             boardBlock.dataset.id = index;
             boardBlock.textContent = value;
 
+            
             // Attach game logic to each block
             boardBlock.addEventListener("click", () => {
                 // Block interaction if game ended
                 if (locked) return;
+
 
                 // Prevent overwriting an existing move
                 if (boardObj.getBoardElement(index) !== "") {
@@ -89,6 +93,7 @@ function createBoard() {
                 const winner = checkWin(boardObj.board);
                 if (winner !== null) {
                     alert("Winner is: " + winner);
+                    winnerCounter(winner);
                     boardObj.lockBoard();
                     return winner;
                 }
@@ -117,6 +122,32 @@ function createBoard() {
         unlockBoard,
         resetBoard
     };
+}
+
+function turnAlternator(turn){
+    const turnX = document.getElementById("turn-alternator-x")
+    const turnO = document.getElementById("turn-alternator-o")
+
+    if (turn === "X"){
+        turnX.style.backgroundColor = "#FF4848";
+        turnO.style.backgroundColor = "#000000";
+    }else{
+        turnO.style.backgroundColor = "#FF4848";
+        turnX.style.backgroundColor = "#000000";
+    }
+}
+
+function winnerCounter(winner){
+    const winsX = document.getElementById("x-wins");
+    const winsO = document.getElementById("o-wins");
+
+    if (winner === "X") {
+        const newWinValue = Number(winsX.textContent) + 1;
+        winsX.textContent = newWinValue;
+    } else {
+        const newWinValue = Number(winsO.textContent) + 1;
+        winsO.textContent = newWinValue;
+    }
 }
 
 // Checks whether the current board state contains a winning combination.
